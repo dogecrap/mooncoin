@@ -212,16 +212,16 @@ void MiningPage::minerError(QProcess::ProcessError error)
 {
     if (error == QProcess::FailedToStart)
     {
-        reportToList("No dig such fail", ERROR, NULL);
+        reportToList("Failure to Start Mining", ERROR, NULL);
     }
 }
 
 void MiningPage::minerFinished()
 {
     if (getMiningType() == ClientModel::SoloMining)
-        reportToList("Solo dig stop", ERROR, NULL);
+        reportToList("Solo Mine Stopped", ERROR, NULL);
     else
-        reportToList("Dig exit", ERROR, NULL);
+        reportToList("Mining Stopped", ERROR, NULL);
     ui->list->addItem("");
     minerActive = false;
     resetMiningButton();
@@ -232,9 +232,9 @@ void MiningPage::minerStarted()
 {
     if (!minerActive)
         if (getMiningType() == ClientModel::SoloMining)
-            reportToList("Solo dig start", ERROR, NULL);
+            reportToList("Solo Mine Started", ERROR, NULL);
         else
-            reportToList("Dig start", STARTED, NULL);
+            reportToList("Mining Started", STARTED, NULL);
     minerActive = true;
     resetMiningButton();
     model->setMining(getMiningType(), true, initThreads, 0);
@@ -381,6 +381,6 @@ void MiningPage::debugToggled(bool checked)
 
 void MiningPage::resetMiningButton()
 {
-    ui->startButton->setText(minerActive ? "Stop Dig" : "Start Dig");
+    ui->startButton->setText(minerActive ? "Abort Fueling" : "Start Fueling");
     enableMiningControls(!minerActive);
 }

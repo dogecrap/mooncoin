@@ -53,12 +53,12 @@ QString dateTimeStr(qint64 nTime)
     return dateTimeStr(QDateTime::fromTime_t((qint32)nTime));
 }
 
-QFont bitcoinAddressFont()
-{
-    QFont font("Cursive");
-    font.setFamily("Comic Sans MS");
-    return font;
-}
+//QFont bitcoinAddressFont()
+//{
+//    QFont font("Cursive");
+//    font.setFamily("Comic Sans MS");
+//    return font;
+//}
 
 void setupAddressWidget(QLineEdit *widget, QWidget *parent)
 {
